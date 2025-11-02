@@ -14,18 +14,24 @@
     <script>
         const h1 = document.querySelector("h1");
         const p = document.querySelector("p");
+        const headings = document.querySelectorAll("h1");
 
         p.textContent = "Texten är nu ändrad";
         h1.style.color="hotpink";
+        
+    function changeColor(event){
+        if (event.target.style.color==="hotpink") 
+        {   event.target.style.color= "blue";
+            event.target.style.fontSize = "88px";}
+        else {event.target.style.color = "hotpink";
+            event.target.style.fontSize = "28px";
+        }};
 
-        h1.addEventListener("click", () =>{
-            if (h1.style.color==="hotpink") 
-            {   h1.style.color= "blue";
-                h1.style.fontSize = "88px";}
-            else {h1.style.color = "hotpink";
-                h1.style.fontSize = "28px";
-            };
-        });
+        headings.forEach(heading => {
+            heading.addEventListener("click", (event) =>{
+        changeColor(event);
+    });
+    });
 
         console.log(headings)
     </script>

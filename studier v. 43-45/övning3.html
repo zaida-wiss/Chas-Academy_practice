@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="classroom">
+        <h1>rubrik 1</h1>
+        <h1>rubrik 2</h1>
+        <h1>rubrik 3</h1>
+        <h1>rubrik 4</h1>
+        <h1>rubrik 5</h1>
+        <h1>rubrik 6</h1>
+        <h1>rubrik 7</h1>
+    </div>
+
+    <script>
+const headings = document.querySelectorAll("h1");
+headings.forEach(heading => {
+ heading.addEventListener("click", changeColor);
+});
+
+function changeColor(event) {
+ event.target.style.color = "blue";
+}
+
+    </script>
+
+</body>
+</html>
