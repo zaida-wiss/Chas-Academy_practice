@@ -1,22 +1,25 @@
-    // <div id="vädersektion">
-    //     <input type="input" aria-label="mata in vilken stad här" placeholder="Skriv stad här">
-    //     <button id="inputBtn" aria-label="tryck på knappen för att väla din stad">Sök</button>
-    //     <section id="weatherInfo" aria-label="här kommer informationen om vädret"></section>
-    // </div>
+import {getWeather} from "./data.js";
+import {renderWeather} from "./ui.js";
 
-    const newCity = document.getElementById("input");
-    const searchBtn = document.getElementById("inputBtn");
-    const weatherInfo = document.getElementById("weatherInfo");
+const cityInput = document.getElementById("input");
+const searchBtn = document.getElementById("inputBtn");
+let currentCity = "";
 
-    searchBtn.addEventListener("click", () => {
-        console.log("Du har klickat på sök-knappen");
-        weatherInfo.textContent= data
-    })
-    async function getWeather(){
-        try {
-       const response= await fetch("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41");
-        const data = await response.json();
-    } catch (error){
-        console.error("Nu blev det fel");
+searchBtn.addEventListener("click", async () => {
+    const city = cityInput.value.trim();
+    const formattedCity = city[0].toUpperCase()+city.slice(1).toLowerCase();
+    currentCity = formattedCity;
+    console.log("Söker efter: ", formattedCity);
+    const data = await getWeather(formattedCity);
+    renderWeather(data);
+});
+
+
+setInterval(async () => {
+    if (currentCity) {
+        const data = await getWeather(currentCity);
+        renderWeather(data);
+        console.log("Automatisk uppdatering för: ", currentCity);
     }
-}
+    }, 600000); //(millisekunder) = 10min
+
