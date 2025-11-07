@@ -1,5 +1,6 @@
 html{
 height: 100%;
+width: 100%;
 }
 
 body {
@@ -7,29 +8,45 @@ body {
 }
 
 #citySearch{
-    display: grid;
-    flex-direction: block;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: 100px;
-}
-#svar{
-    background-color: white;
-    text-align: center;
-    border-radius: 20px solid black;
 }
 
 input{
     border-radius: 10px;
     text-align: center;
     height:20px;
+    width: 200px;
+    top:50%;
+    left:50%;
+    padding:0;
+    position: relative;
+    transform: translate(-50%,-50%);
 }
 
 button{
     border-radius: 10px;
     text-align: center;
     width: 30px;
-    text-align: center;
     padding:0;
+    position: relative;
     left:50%;
-    
+    justify-content: center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+#svar{
+    background-color: white;
+    text-align: center;
+    border:2px solid grey;
+    border-radius: 20px;
+    margin-top: 30px;
+    width: 60%;
+    position: absolute;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
 }
