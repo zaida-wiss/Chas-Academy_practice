@@ -7,17 +7,20 @@ const weatherOutput =document.createElement("p");
 //Funktion som visar vädret
 const showWeather= () => {
     document.querySelector("#citySearch").appendChild(weatherOutput);
-    weatherOutput.textContent =cityInput.value.charAt(0).toUpperCase() + cityInput.value.slice(1).toLowerCase();    
+    const city =  cityInput.value.charAt(0).toUpperCase() + cityInput.value.slice(1).toLowerCase();
+    weatherOutput.textContent = findCityWeather
     console.log ("vädret visades");
-}
+};
 
-//
+//EventLyssnare
 cityBtn.addEventListener("click", showWeather);
 cityInput.addEventListener("change", showWeather);
 
 
 
-
+const findCityWeather=(city) => {
+    return CITIES.find(x => x.name === city)
+}
 
 
 //Mockup-data (Javascript)
