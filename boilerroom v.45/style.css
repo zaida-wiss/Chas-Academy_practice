@@ -1,52 +1,51 @@
-html{
-height: 100%;
-width: 100%;
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(45deg, #4aaecf, #edeed9, #153291);
+  font-family: sans-serif;
 }
 
-body {
-    background: linear-gradient(45deg,#4aaecf, #edeed9, #153291);
+#citySearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100vh; /* centrerar allt på hela sidan */
 }
 
-#citySearch{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 100px;
+input {
+  border-radius: 10px;
+  text-align: center;
+  height: 30px;
+  width: 200px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
-input{
-    border-radius: 10px;
-    text-align: center;
-    height:20px;
-    width: 200px;
-    top:50%;
-    left:50%;
-    padding:0;
-    position: relative;
-    transform: translate(-50%,-50%);
+button {
+  background-color: #dce2c0; /* mörkblå ton */
+  color: white;              /* vit text */
+  border: none;              /* ta bort grå standardkant */
+  border-radius: 10px;       /* rundade hörn */
+  padding: 8px 20px;         /* lagom stor knapp */
+  cursor: pointer;           /* ändrar muspekaren till hand */
+  font-size: 1rem;
+  transition: all 0.2s ease; /* gör att hover blir mjuk */
+  font-size: 20px;
 }
 
-button{
-    border-radius: 10px;
-    text-align: center;
-    width: 30px;
-    padding:0;
-    position: relative;
-    left:50%;
-    justify-content: center;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+button:hover {
+  background-color: #9fa984; /* ljusare blå vid hover */
+  transform: scale(1.05);   /* växer lite när du håller över */
 }
-#svar{
-    background-color: white;
-    text-align: center;
-    border:2px solid grey;
-    border-radius: 20px;
-    margin-top: 30px;
-    width: 60%;
-    position: absolute;
-    top:30%;
-    left:50%;
-    transform: translate(-50%,-50%);
+
+#svar {
+  background-color: white;
+  text-align: center;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 10px;
+  width: 30%;
+  font-size: 30px;
 }
