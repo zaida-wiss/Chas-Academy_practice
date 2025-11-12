@@ -5,7 +5,7 @@ const input = document.getElementById("cityInput");
 const list = document.getElementById("cityList");
 const output = document.getElementById("output");
 
-// Gör första bokstaven stor
+// Första bokstaven blir stor
 input.addEventListener("input", () => {
   if (!input.value) return;
   input.value =
@@ -34,11 +34,12 @@ input.addEventListener("keydown", async (e) => {
     if (cities.length === 1) {
       const c = cities[0];
       const w = await getWeather(c.latitude, c.longitude);
-      output.textContent = `Temperaturen i ${c.name}, ${c.country} är ${w.current_weather.temperature}°C.`;
+      // 🟢 visa användarens stadnamn i texten
+      output.textContent = `Temperaturen i ${city}, ${c.country} är ${w.current_weather.temperature}°C.`;
       return;
     }
 
-    // Flera städer hittade → visa alternativ i input-listan
+    // Flera städer hittade → visa alternativ i listan
     cities.forEach((c) => {
       const opt = document.createElement("option");
       opt.value = `${c.name}, ${c.country}`;
