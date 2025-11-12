@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tillgänglig meny med ARIA</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <script defer>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menu = document.getElementById("menuList");
+      const button = document.getElementById("menuButton");
+      const status = document.getElementById("status");
+
+      // Initiera rätt tillstånd
+      button.setAttribute("aria-expanded", "false");
+
+      button.addEventListener("click", () => {
+        // Hämta nuvarande värde
+        const expanded = button.getAttribute("aria-expanded") === "true";
+
+        // Växla till motsatt värde
+        button.setAttribute("aria-expanded", String(!expanded));
+
+        // Visa/dölj meny
+        menu.classList.toggle("show");
+
+        // Uppdatera statusfältet
+        if (!expanded) {
+          status.textContent = "";
+        } else {
+          status.textContent = "Menyn är nu stängd";
+        }
+      });
+    });
+  </script>
+
+  <style>
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    #menuList {
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #menuList.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav role="navigation" aria-label="Huvudmeny">
+    <button id="menuButton" aria-controls="menuList">Meny</button>
+
+    <ul id="menuList">
+      <li><a href="index.html">Start</a></li>
+      <li><a href="services.html">Tjänster</a></li>
+      <li><a href="about.html">Om oss</a></li>
+      <li><a href="contact.html">Kontakt</a></li>
+    </ul>
+
+    <div id="status" aria-live="polite"></div>
+  </nav>
+</body>
+</html>
