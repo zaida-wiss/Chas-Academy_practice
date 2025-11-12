@@ -35,7 +35,7 @@ input.addEventListener("keydown", async (e) => {
       const c = cities[0];
       const w = await getWeather(c.latitude, c.longitude);
       // 🟢 visa användarens stadnamn i texten
-      output.textContent = `Temperaturen i ${city}, ${c.country} är ${w.current_weather.temperature}°C.`;
+      output.textContent = `Temperaturen i ${city} är ${w.current_weather.temperature}°C.`;
       return;
     }
 
@@ -66,7 +66,7 @@ input.addEventListener("change", async () => {
 
   try {
     const w = await getWeather(lat, lon);
-    output.textContent = `Temperaturen i ${name}, ${country} är ${w.current_weather.temperature}°C.`;
+    output.textContent = `Temperaturen i ${name}, är ${w.current_weather.temperature}°C.`;
   } catch {
     output.textContent = "Kunde inte hämta väderdata.";
   }
