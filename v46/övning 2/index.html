@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./js/main.js" defer></script>
-    <title>Övning 2</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Väderapp</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script type="module" src="./js/main.js" defer></script>
 </head>
 <body>
-    <header></header>
-    <main>
-        <section id="weatherInput">
-            <input id="cityInput" type="text">
-            <button id="citySearchBtn">Sök</button>
-        </section>
-        <section id="weatherOutput">
-            <output id="outputContainer"></output>
-        </section>
-    </main>
-    <footer></footer>
+  <main>
+    <section id="weatherInput">
+      <input id="cityInput" type="text" list="cityList" placeholder="Skriv stad..." />
+      <datalist id="cityList"></datalist>
+    </section>
+
+    <section id="weatherOutput">
+      <p id="output"></p>
+    </section>
+  </main>
 </body>
 </html>

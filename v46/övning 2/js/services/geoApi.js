@@ -1,16 +1,39 @@
-export async function getGeo(city, country = "SE") {
-  const encodedCity = encodeURIComponent(city);
-  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodedCity}&country=${country}`;
-  
-  const response = await fetch(url);
-  if (!response.ok) throw new Error("Kunde inte hämta koordinater");
+export async function getGeo(city) {
+  // API gillar inte å/ä/ö, så vi ersätter dem innan sökning
+  const query = city
+    .replace(/å/g, "a")
+    .replace(/ä/g, "a")
+    .replace(/ö/g, "o")
+    .replace(/Å/g, "A")
+    .replace(/Ä/g, "A")
+    .replace(/Ö/g, "O");
 
-  const data = await response.json();
+  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&country=SE`;
 
-  // Kontrollera att något faktiskt hittades
-  if (!data.results || data.results.length === 0) {
-    throw new Error("Ingen stad hittades");
-  }
+  const res = await fetch(url);
+  if (!res.ok) throw new Error("Kunde inte hämta koordinater");
+  const data = await res.json();
+  if (!data.results) return [];
 
-  return data.results[0]; // innehåller latitude, longitude, name, country osv.
+  // Ta bara med riktiga städer
+  const allowed = ["PPLC", "PPLA", "PPLA2"];
+  const cities = data.results.filter((r) => allowed.includes(r.feature_code));
+
+  // Översätt till svenska namn om de finns i listan
+  const names = {
+    Goeteborg: "Göteborg",
+    Goteborg: "Göteborg",
+    Malmo: "Malmö",
+    Are: "Åre",
+    Orebro: "Örebro",
+    Vasteras: "Västerås",
+    Gavle: "Gävle",
+    Lulea: "Luleå",
+    Angelholm: "Ängelholm",
+  };
+
+  return cities.map((c) => ({
+    ...c,
+    name: names[c.name] || c.name,
+  }));
 }

@@ -1,0 +1,38 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(180deg, #e0f7ff, #ffffff);
+  color: #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 5rem;
+}
+
+main {
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+#cityInput {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#cityInput:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 4px #38bdf8;
+}
+
+#output {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
