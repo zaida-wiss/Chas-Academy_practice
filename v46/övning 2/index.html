@@ -3,20 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Väderapp</title>
+  <title>Väderkarta</title>
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <!-- Din CSS -->
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- App JS -->
   <script type="module" src="./js/main.js" defer></script>
 </head>
 <body>
   <main>
-    <section id="weatherInput">
-      <input id="cityInput" type="text" list="cityList" placeholder="Skriv stad..." />
+    <h1>Väderkarta</h1>
+
+    <section class="search">
+      <input id="cityInput" list="cityList" placeholder="Skriv stad..." />
       <datalist id="cityList"></datalist>
     </section>
 
-    <section id="weatherOutput">
-      <p id="output"></p>
+    <section class="info">
+      <p id="output">Sök efter en stad för att se väder och karta.</p>
     </section>
+
+    <section id="map"></section>
   </main>
 </body>
 </html>

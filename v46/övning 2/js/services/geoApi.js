@@ -7,11 +7,10 @@ export async function getGeo(city) {
     .replace(/Ä/g, "A")
     .replace(/Ö/g, "O");
 
-  // 🌍 ta bort country=SE → sök globalt
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}`;
-
   const res = await fetch(url);
   if (!res.ok) throw new Error("Kunde inte hämta koordinater");
+
   const data = await res.json();
   if (!data.results) return [];
 
