@@ -1,143 +1,82 @@
 // js/main.js
 console.log("MAIN.JS LADDADES!");
 
-import { getGeo } from "./services/geoService.js";
-import { showMatches } from "./components/showMatches.js";
+import { geoService } from "./services/geoService.js";
 import { weatherService } from "./services/weatherService.js";
 import { weatherView } from "./components/weatherView.js";
 import { showMap } from "./services/mapView.js";
+import { showMatches } from "./components/showMatches.js";
 
 // DOM-element
 const cityInput = document.getElementById("cityInput");
 const searchMatch = document.getElementById("searchMatch");
 const weatherContainer = document.getElementById("weatherContainer");
 
-// För pilnavigation
-let activeIndex = -1;
-
-// Ta bara stadens namn ("Umeå" ur "Umeå, Sweden")
-function extractCityName(fullText) {
-    return fullText.split(",")[0].trim();
+// 🔍 Tydlig extraherare (tar bort land från "Umeå, Sweden")
+function extractCityName(text) {
+    return text.split(",")[0].trim();
 }
 
-// Välj stad (klick/enter/en enda träff)
-async function selectCity(li) {
-    searchMatch.innerHTML = "";
+// 🌤 Rendera vald stad (bara 1 eftersom geoService filtrerar allt)
+async function renderCity(cityObj) {
+    const { name, latitude, longitude } = cityObj;
 
-    const fullText = li.textContent;
-    const cityName = extractCityName(fullText);
-
-    const lat = li.dataset.lat;
-    const lon = li.dataset.lon;
-
-    const weather = await weatherService(lat, lon);
+    // Hämta väder
+    const weather = await weatherService(latitude, longitude);
     const card = weatherView(weather);
 
-    // Visa väder
+    // Visa väderkort
     weatherContainer.innerHTML = `
-        <h2>${cityName}</h2>
+        <h2>${name}</h2>
     `;
     weatherContainer.appendChild(card);
 
     // Visa karta
-    showMap(lat, lon, cityName);
+    showMap(latitude, longitude, name);
 }
 
-// Markera rätt rad vid pil upp/ner
-function updateActiveItem(ul) {
-    const items = ul.querySelectorAll("li");
+// ⌨ När användaren trycker enter
+cityInput.addEventListener("keydown", async (event) => {
+    if (event.key !== "Enter") return;
 
-    items.forEach((li, index) => {
-        li.classList.toggle("active", index === activeIndex);
-        if (index === activeIndex) {
-            li.focus();
-        }
-    });
-}
+    const query = cityInput.value.trim();
+    if (!query) return;
 
-// När användaren skriver
-cityInput.addEventListener("input", async () => {
-    searchMatch.innerHTML = "";
-    const text = cityInput.value.trim();
-    if (!text) return;
+    // Hämta exakt matchning
+    const result = await geoService(query);
 
-    const results = await getGeo(text);
-    if (results.length === 0) return;
+    searchMatch.innerHTML = ""; // rensa listan
 
-    // EN träff → visa direkt
-    if (results.length === 1) {
-        const only = results[0];
-
-        const tempLi = document.createElement("li");
-        tempLi.textContent = `${only.name}, ${only.country}`;
-        tempLi.dataset.lat = only.latitude;
-        tempLi.dataset.lon = only.longitude;
-
-        await selectCity(tempLi);
+    if (result.length === 0) {
+        // ❌ Ingen exakt stad hittades
+        weatherContainer.innerHTML = `<p>Ingen exakt träff för "${query}"</p>`;
         return;
     }
 
-    // Flera träffar → visa UL
-    const ul = showMatches(results);
-    searchMatch.appendChild(ul);
-
-    // reset för pilnavigation
-    activeIndex = -1;
+    // 🎯 Exakt en träff → visa direkt
+    const city = result[0];
+    renderCity(city);
 });
 
-// Klick på rad
+// 🖱 Klick på eventuella list-träffar
 searchMatch.addEventListener("click", async (event) => {
-    const li = event.target;
-    if (li.tagName !== "LI") return;
-
-    await selectCity(li);
-});
-
-// Enter på rad
-searchMatch.addEventListener("keydown", async (event) => {
-    if (event.key !== "Enter") return;
+    if (event.target.tagName !== "LI") return;
 
     const li = event.target;
-    if (li.tagName !== "LI") return;
 
-    await selectCity(li);
+    const cityObj = {
+        name: extractCityName(li.textContent),
+        latitude: li.dataset.lat,
+        longitude: li.dataset.lon
+    };
+
+    searchMatch.innerHTML = "";
+    renderCity(cityObj);
 });
 
-// Pil ner/upp i input – hoppa in i listan
-cityInput.addEventListener("keydown", (event) => {
-    const ul = searchMatch.querySelector("ul");
-    if (!ul) return;
-
-    if (event.key === "ArrowDown") {
-        event.preventDefault();
-        activeIndex = 0;
-        updateActiveItem(ul);
-    }
-});
-
-// Pil ner/upp i dropdown-listan
-searchMatch.addEventListener("keydown", (event) => {
-    const ul = searchMatch.querySelector("ul");
-    if (!ul) return;
-
-    const items = ul.querySelectorAll("li");
-
-    if (event.key === "ArrowDown") {
-        event.preventDefault();
-        if (activeIndex < items.length - 1) activeIndex++;
-        updateActiveItem(ul);
-    }
-
-    if (event.key === "ArrowUp") {
-        event.preventDefault();
-        if (activeIndex > 0) activeIndex--;
-        updateActiveItem(ul);
-    }
-});
-
-// Klick utanför → stäng listan
-document.addEventListener("click", (e) => {
-    if (!searchMatch.contains(e.target) && e.target !== cityInput) {
+// 📤 Klick utanför → stäng listan
+document.addEventListener("click", (event) => {
+    if (!searchMatch.contains(event.target) && event.target !== cityInput) {
         searchMatch.innerHTML = "";
     }
 });

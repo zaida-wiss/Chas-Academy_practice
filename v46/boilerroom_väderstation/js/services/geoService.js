@@ -1,47 +1,79 @@
+// js/services/geoService.js
+
+// Ingen diakritikborttagning! Å/Ä/Ö måste vara kvar.
 function normalize(str) {
-  return str
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    return str.trim().toLowerCase();
 }
 
-export async function getGeo(city) {
-  const url =
-    `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}`;
+// Haversine – avstånd i km
+function distanceKm(lat1, lon1, lat2, lon2) {
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+        Math.sin(dLat / 2) ** 2 +
+        Math.cos(lat1 * Math.PI / 180) *
+        Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) ** 2;
 
-  const res = await fetch(url);
-  if (!res.ok) return [];
+    return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+}
 
-  const data = await res.json();
-  if (!data.results) return [];
+export async function geoService(city) {
 
-  const allowed = ["PPLC", "PPLA", "PPLA2", "PPL", "ISL"];
+    const clean = city.trim();
+    if (!clean) return [];
 
-  const filtered = data.results.filter(r => allowed.includes(r.feature_code));
+    const url =
+        `https://geocoding-api.open-meteo.com/v1/search?` +
+        `name=${encodeURIComponent(clean)}` +
+        `&language=sv&count=20`;
 
-  const normalizedCity = normalize(city);
+    const res = await fetch(url);
+    const data = await res.json();
+    if (!data.results) return [];
 
-  // exakt matchning
-  const strict = filtered.filter(item =>
-    normalize(item.name) === normalizedCity
-  );
+    // Tillåt alla typer som verkliga städer kan vara
+    const allowed = ["PPL", "PPLX", "PPLA", "PPLA2", "PPLA3", "PPLC"];
 
-  // TA BORT DUBLETTER (unika lat+lon)
-  const seen = new Set();
-  const unique = [];
+    const filtered = data.results.filter(item =>
+        allowed.includes(item.feature_code)
+    );
 
-  for (const item of strict) {
-    const key = `${item.latitude},${item.longitude}`;
-    if (!seen.has(key)) {
-      seen.add(key);
-      unique.push({
-        name: item.name,
-        country: item.country,
-        latitude: item.latitude,
-        longitude: item.longitude
-      });
-    }
-  }
+    // Exakt matchning inklusive å/ä/ö
+    const target = normalize(clean);
 
-  return unique;
+    let exact = filtered.filter(item =>
+        normalize(item.name) === target
+    );
+
+    if (exact.length === 0) return []; // inget exakt → ingen träff
+
+    // Om mer än en exakt matchning → välj baspunkten (första)
+    const base = exact[0];
+    const baseLat = base.latitude;
+    const baseLon = base.longitude;
+
+    // Begränsa till max 70 km radie
+    exact = exact.filter(item => {
+        const d = distanceKm(baseLat, baseLon, item.latitude, item.longitude);
+        return d <= 70;
+    });
+
+    // Sortera – närmast först
+    exact.sort((a, b) => {
+        const da = distanceKm(baseLat, baseLon, a.latitude, a.longitude);
+        const db = distanceKm(baseLat, baseLon, b.latitude, b.longitude);
+        return da - db;
+    });
+
+    // Returnera EN stad
+    const best = exact[0];
+
+    return [{
+        name: best.name,
+        country: best.country,
+        latitude: best.latitude,
+        longitude: best.longitude
+    }];
 }
