@@ -1,9 +1,9 @@
 console.log("MAIN.JS LADDADES!");
-import { geoService } from "./services/geoService.js";
+import { getGeo } from "./services/getGeo.js";
 import { showMatches } from "./components/showMatches.js";
 import { weatherService } from "./services/weatherService.js";
 import { weatherView } from "./components/weatherView.js";
-import { showMap } from "./components/mapView.js";
+import { showMap } from "./services/mapView.js";
 
 // DOM-element
 const cityInput = document.getElementById("cityInput");
@@ -18,7 +18,7 @@ cityInput.addEventListener("keydown", async (e) => {
     if (!text) return;
 
     // hämta städer
-    const results = await geoService(text);
+    const results = await getGeo(text);
 
     // inga träffar
     if (results.length === 0) {

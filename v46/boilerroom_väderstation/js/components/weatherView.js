@@ -1,4 +1,4 @@
-export function renderWeather(weather, cityName) {
+export function weatherView(weather, cityName) {
   const container = document.getElementById("weatherContainer");
 
   container.innerHTML = `

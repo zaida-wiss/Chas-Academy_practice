@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script defer type="module" src="./main.js"></script>
-    <title>Väderstation</title>
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script defer type="module" src="./js/main.js"></script>
+    <title>Väderstation</title>
 
 
 </head>
@@ -18,7 +18,7 @@
     <h1>Väderstation</h1>
 
     <section id="searchSection">
-        <input id="input" type="text" placeholder="Skriv stad och tryck Enter">
+        <input id="cityInput" type="text" placeholder="Sök stad" autocomplete="off" autocorrect="off">
     </section>
 
     <section id="searchMatch"></section>
