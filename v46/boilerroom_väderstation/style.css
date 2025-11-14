@@ -1,0 +1,89 @@
+/* --- Layoutstruktur --- */
+body {
+    font-family: system-ui, sans-serif;
+    background: #f6f7fb;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#searchContainer {
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+}
+
+/* --- Inputfältet --- */
+#cityInput {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s ease;
+    background: white;
+}
+
+#cityInput:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 4px rgba(74, 144, 226, 0.4);
+}
+
+/* --- Dropdown (UL + LI) --- */
+#searchMatch ul {
+    margin: 6px 0 0 0;
+    padding: 0;
+    list-style: none;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+#searchMatch li {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+#searchMatch li:last-child {
+    border-bottom: none;
+}
+
+/* Hover-effekt */
+#searchMatch li:hover {
+    background: #f0f4ff;
+}
+
+/* Aktiv rad vid pil upp/ner */
+#searchMatch .active {
+    background: #e6efff;
+    border-left: 3px solid #4a90e2;
+}
+
+/* --- Väderkortet --- */
+#weatherContainer {
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    max-width: 400px;
+}
+
+#weatherContainer h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #333;
+}
+#weatherContainer p {
+    font-size: 1rem;
+    color: #555;
+    margin: 8px 0;
+}
