@@ -3,29 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Leaflet för kartan -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    />
+    <script
+        defer
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+
     <link rel="stylesheet" href="style.css">
     <script defer type="module" src="./js/main.js"></script>
     <title>Väderstation</title>
-
-
 </head>
-
 <body>
-
+<header>
     <h1>Väderstation</h1>
+</header>
 
-    <section id="searchSection">
-        <input id="cityInput" type="text" placeholder="Sök stad" autocomplete="off" autocorrect="off">
+<main>
+    <section id="searchContainer">
+        <label for="cityInput" class="sr-only">Sök efter stad</label>
+        <input
+            id="cityInput"
+            type="text"
+            autocomplete="off"
+            placeholder="Skriv en stad här"
+        >
+        <div id="searchMatch" role="listbox"></div>
     </section>
 
-    <section id="searchMatch"></section>
+    <section id="weatherContainer" aria-live="polite"></section>
 
-    <section id="weatherContainer"></section>
+    <section aria-label="Karta över vald plats">
+        <div id="map"></div>
+    </section>
+</main>
 
-    <div id="map"></div>
-
+<footer></footer>
 </body>
 </html>

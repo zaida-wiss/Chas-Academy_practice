@@ -1,10 +1,18 @@
+// js/services/weatherService.js
+
 export async function weatherService(lat, lon) {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error("Kunde inte hämta vädret");
-  const data = await res.json();
-  return data.current_weather;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,snowfall`;
+    const APIres = await fetch(url);
+    const data = await APIres.json();
+
+    const cleanedWeather = {
+        temperature: data.current.temperature_2m,
+        code: data.current.weather_code
+    };
+
+    return cleanedWeather;
 }
+
 
 export function translateWeather(code) {
   const map = {

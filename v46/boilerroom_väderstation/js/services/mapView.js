@@ -1,21 +1,26 @@
+// js/services/mapView.js
+
 let map;
 let marker;
 
 export function showMap(lat, lon, city) {
-  if (!map) {
-    map = L.map("map").setView([lat, lon], 10);
+    const latitude = Number(lat);
+    const longitude = Number(lon);
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
-      attribution: "&copy; OpenStreetMap"
-    }).addTo(map);
-  }
+    if (!map) {
+        map = L.map("map").setView([latitude, longitude], 9);
 
-  if (marker) {
-    marker.remove();
-  }
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: "&copy; OpenStreetMap"
+        }).addTo(map);
+    } else {
+        map.setView([latitude, longitude], 9);
+    }
 
-  marker = L.marker([lat, lon]).addTo(map).bindPopup(city).openPopup();
+    if (marker) {
+        marker.remove();
+    }
 
-  map.setView([lat, lon], 10);
+    marker = L.marker([latitude, longitude]).addTo(map).bindPopup(city).openPopup();
 }
