@@ -4,7 +4,7 @@ export async function geoService(city) {
     const data = await res.json();
     
     // tillåt fler typer av städer/byar
-    const allowed = ["PPLC", "PPLA", "PPLA2", "ISL"];
+    const allowed = ["PPLC", "PPLA", "PPLA2", "PPL", "ISL"];
     const filtered = data.results.filter(item => allowed.includes(item.feature_code));
 
     // exakt match med början av namnet

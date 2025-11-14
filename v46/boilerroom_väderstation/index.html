@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +8,19 @@
     <title>Väderstation</title>
 </head>
 <body>
-    <header>
-        <h1>Väderstation</h1>
-    </header>
-    <main>
-        <section id="searchContainer">
-            <input id="cityInput" type="text" autocomplete="off">
-            <output id="searchMatch"></output>
-        </section>
-        <section id="weatherContainer">
-        </section>
-    </main>
-    <footer></footer>
+<header>
+    <h1>Väderstation</h1>
+</header>
+<main>
+    <section id="searchContainer">
+        <label for="cityInput" class="sr-only">Sök efter stad</label>
+        <input id="cityInput" type="text" autocomplete="off">
+        <div id="searchMatch" role="listbox"></div>
+    </section>
+
+
+    <section id="weatherContainer" aria-live="polite"></section>
+</main>
+<footer></footer>
 </body>
 </html>

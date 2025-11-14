@@ -5,7 +5,6 @@ const data = await APIres.json();
 const cleanedWeather= {
     temperature: data.current.temperature_2m,
     code: data.current.weather_code,
-    snowfall: data.current.snowfall
 } 
 
 return cleanedWeather

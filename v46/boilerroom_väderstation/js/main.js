@@ -11,23 +11,21 @@ const weatherContainer = document.getElementById("weatherContainer");
 // ⭐ För pilnavigation
 let activeIndex = -1;
 
-// ⭐ Helper: ta bara stad (“Umeå” ur “Umeå, Sweden”)
+// ⭐ Helper: ta bara stadens namn ("Umeå" ur "Umeå, Sweden")
 function extractCityName(fullText) {
     return fullText.split(",")[0].trim();
 }
 
-// ⭐ Helper: välj stad (klick/enter)
+// ⭐ Helper: välj stad (klick/enter eller en träff)
 async function selectCity(li) {
-    searchMatch.innerHTML = ""; // stäng dropdown
+    searchMatch.innerHTML = ""; 
 
-    const fullText = li.textContent; 
+    const fullText = li.textContent;
     const cityName = extractCityName(fullText);
 
     const lat = li.dataset.lat;
     const lon = li.dataset.lon;
 
-    // användaren valde aktivt → fyll input
-    cityInput.value = cityName;
 
     const weather = await weatherService(lat, lon);
     const card = weatherView(weather);
@@ -38,15 +36,14 @@ async function selectCity(li) {
     weatherContainer.appendChild(card);
 }
 
-// ⭐ Markera vald rad (pil upp/ner)
+// ⭐ Markera rätt rad vid pil upp/ner
 function updateActiveItem(ul) {
     const items = ul.querySelectorAll("li");
 
     items.forEach((li, index) => {
         li.classList.toggle("active", index === activeIndex);
-
         if (index === activeIndex) {
-            li.focus();
+            li.focus(); 
         }
     });
 }
@@ -59,27 +56,25 @@ cityInput.addEventListener("input", async () => {
 
     const results = await geoService(text);
 
-    // ⭐ EN träff → visa väder men FYLL INTE input
+    // EN träff → direkt
     if (results.length === 1) {
         const only = results[0];
 
-        const cityName = extractCityName(`${only.name}, ${only.country}`);
-        const weather = await weatherService(only.latitude, only.longitude);
-        const card = weatherView(weather);
+        const tempLi = document.createElement("li");
+        tempLi.textContent = `${only.name}, ${only.country}`;
+        tempLi.dataset.lat = only.latitude;
+        tempLi.dataset.lon = only.longitude;
 
-        weatherContainer.innerHTML = `
-            <h2>${cityName}</h2>
-        `;
-        weatherContainer.appendChild(card);
-
-        return; // avbryt, ingen dropdown
+        await selectCity(tempLi);
+        return;
     }
 
-    // ⭐ Flera träffar → visa dropdown
+    // Flera träffar → visa UL
     const ul = showMatches(results);
     searchMatch.appendChild(ul);
 
-    activeIndex = -1; // reset pilnavigation
+    // viktig reset för pilnavigation
+    activeIndex = -1;
 });
 
 // ⭐ Klick
@@ -90,7 +85,7 @@ searchMatch.addEventListener("click", async (event) => {
     await selectCity(li);
 });
 
-// ⭐ Enter (på valfri <li>)
+// ⭐ Enter
 searchMatch.addEventListener("keydown", async (event) => {
     if (event.key !== "Enter") return;
 
@@ -100,7 +95,7 @@ searchMatch.addEventListener("keydown", async (event) => {
     await selectCity(li);
 });
 
-// ⭐ Pil ner: hoppa till första raden
+// ⭐ Pil ner/upp i input – aktivera första raden
 cityInput.addEventListener("keydown", (event) => {
     const ul = searchMatch.querySelector("ul");
     if (!ul) return;
@@ -112,7 +107,7 @@ cityInput.addEventListener("keydown", (event) => {
     }
 });
 
-// ⭐ Pil upp/ner i listan
+// ⭐ Pil ner/upp i dropdown-listan
 searchMatch.addEventListener("keydown", (event) => {
     const ul = searchMatch.querySelector("ul");
     if (!ul) return;

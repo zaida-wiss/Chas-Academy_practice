@@ -36,7 +36,6 @@ export function weatherView(weatherData) {
     div.innerHTML = `
     <p>${weatherData.temperature}°C</p>
     <p>${translateWeatherCode(weatherData.code)}</p>
-    <p>${weatherData.snowfall}mm</p>
     `;
     
     return div;
