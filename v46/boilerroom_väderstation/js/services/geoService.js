@@ -1,24 +1,47 @@
-export async function geoService(city) {
-    const url = `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=10&language=sv&format=json`;
-    const res = await fetch(url);
-    const data = await res.json();
-    
-    // tillåt fler typer av städer/byar
-    const allowed = ["PPLC", "PPLA", "PPLA2", "PPL", "ISL"];
-    const filtered = data.results.filter(item => allowed.includes(item.feature_code));
+function normalize(str) {
+  return str
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
 
-    // exakt match med början av namnet
-    const lowerCity = city.toLowerCase();
-    const strict = filtered.filter(item =>
-        item.name.toLowerCase().startsWith(lowerCity)
-    );
+export async function getGeo(city) {
+  const url =
+    `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}`;
 
-    const cleanedRes = strict.map(item => ({
+  const res = await fetch(url);
+  if (!res.ok) return [];
+
+  const data = await res.json();
+  if (!data.results) return [];
+
+  const allowed = ["PPLC", "PPLA", "PPLA2", "PPL", "ISL"];
+
+  const filtered = data.results.filter(r => allowed.includes(r.feature_code));
+
+  const normalizedCity = normalize(city);
+
+  // exakt matchning
+  const strict = filtered.filter(item =>
+    normalize(item.name) === normalizedCity
+  );
+
+  // TA BORT DUBLETTER (unika lat+lon)
+  const seen = new Set();
+  const unique = [];
+
+  for (const item of strict) {
+    const key = `${item.latitude},${item.longitude}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      unique.push({
         name: item.name,
         country: item.country,
         latitude: item.latitude,
         longitude: item.longitude
-    }));
+      });
+    }
+  }
 
-    return cleanedRes;
+  return unique;
 }

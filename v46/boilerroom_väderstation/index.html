@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script defer type="module" src="./js/main.js"></script>
+    <script defer type="module" src="./main.js"></script>
     <title>Väderstation</title>
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
 </head>
+
 <body>
-<header>
+
     <h1>Väderstation</h1>
-</header>
-<main>
-    <section id="searchContainer">
-        <label for="cityInput" class="sr-only">Sök efter stad</label>
-        <input id="cityInput" type="text" autocomplete="off">
-        <div id="searchMatch" role="listbox"></div>
+
+    <section id="searchSection">
+        <input id="input" type="text" placeholder="Skriv stad och tryck Enter">
     </section>
 
+    <section id="searchMatch"></section>
 
-    <section id="weatherContainer" aria-live="polite"></section>
-</main>
-<footer></footer>
+    <section id="weatherContainer"></section>
+
+    <div id="map"></div>
+
 </body>
 </html>
