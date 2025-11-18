@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<title>Visually Hidden Demo</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+
+<h1>Demo: Hur clip-path och overflow fungerar</h1>
+
+<div class="wrapper">
+
+    <!-- 1. Normal text -->
+    <div class="box normal">
+        <p>Synlig text</p>
+    </div>
+
+    <!-- 2. Bara clip-path -->
+    <div class="box clip">
+        <p>Gömd med clip-path</p>
+    </div>
+
+    <!-- 3. Bara overflow hidden -->
+    <div class="box overflow">
+        <p>Overflow hidden</p>
+    </div>
+
+    <!-- 4. Riktigt visually-hidden -->
+    <div class="box visually">
+        <p class="visually-hidden">Helt gömd men läses av skärmläsare</p>
+        <p class="explanation">Den här rutan är tom visuellt, men texten i den första paragrafen finns kvar.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

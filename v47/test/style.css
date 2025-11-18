@@ -1,0 +1,62 @@
+body {
+    font-family: sans-serif;
+    background: #f0f4ff;
+    padding: 2rem;
+    line-height: 1.5;
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.box {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.2rem;
+    min-height: 100px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* 1. Normal */
+.normal p {
+    color: black;
+}
+
+/* 2. Bara clip-path */
+.clip p {
+    background: #fde68a;
+    /* viktiga delen: klipp bort allt */
+    clip-path: inset(50%);
+}
+
+/* 3. Bara overflow hidden */
+.overflow p {
+    background: #bbf7d0;
+    width: 50px;
+    height: 20px;
+    overflow: hidden;
+}
+
+/* 4. Riktigt visually-hidden */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Forklaring-text */
+.explanation {
+    color: #4b5563;
+    font-size: 0.9rem;
+    margin-top: 1.2rem;
+}

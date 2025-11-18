@@ -1,17 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tillgänglighetsövningar – Bild, ARIA & WCAG</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="main.js"></script>
-    <title>Den Försvunna WCAG-kompassen</title>
 </head>
 <body>
-    <header>
-        <h1>Den Försvunna WCAG-kompassen</h1>
-    </header>
-    <main></main>
-    <footer></footer>
+
+<header>
+    <h1>🧙‍♀️ Sagoworkshop – Tillgänglighetsövningar för Agnes</h1>
+    <p>I varje övning ska du lägga in rätt WCAG-attribut direkt i HTML-elementen.  
+    Du tränar <strong>alt-text</strong>, <strong>aria-label</strong>, <strong>aria-hidden</strong> och <strong>semantik</strong>.</p>
+</header>
+
+<main>
+
+    <!-- Övning 1 -->
+    <section class="exercise">
+        <h2>Övning 1 – Lägg till alt-texter</h2>
+        <p class="instruction">
+            Bilderna nedan saknar alt-text. Lägg till korrekta <code>alt=""</code> efter WCAG-principen <strong>Perceivable</strong>.
+        </p>
+
+        <div class="image-grid">
+
+            <!-- Bild 1 -->
+            <div class="task">
+                <img src="https://picsum.photos/300/200?random=1" alt="stadsmiljö">
+                <p><strong>Din uppgift:</strong> Lägg till en alt-text som korrekt beskriver bilden.</p>
+                <textarea class="code-area"></textarea>
+            </div>
+
+            <!-- Bild 2 -->
+            <div class="task">
+                <img src="https://picsum.photos/300/200?random=2" alt="landskap">
+                <p><strong>Din uppgift:</strong> Vad ska alt-texten vara? Skriv HTML-raden med förbättringen.</p>
+                <textarea class="code-area"></textarea>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Övning 2 -->
+    <section class="exercise">
+        <h2>Övning 2 – Skapa tillgängliga knappar</h2>
+        <p class="instruction">
+            Dessa element <em>ser ut</em> som knappar, men är inte semantiska.  
+            Skriv om dem som riktiga <code>&lt;button&gt;</code>, eller lägg till <code>role</code> och <code>aria-label</code>.
+        </p>
+
+        <div class="button-tasks">
+
+            <button type="button"="fake-button">Spara</button>
+            <textarea class="code-area"></textarea>
+
+            <button class="fake-button">Ta bort</button>
+            <textarea class="code-area"></textarea>
+
+        </div>
+    </section>
+
+    <!-- Övning 3 -->
+    <section class="exercise">
+        <h2>Övning 3 – ARIA Label på ikonknappar</h2>
+        <p class="instruction">
+            Ikonen saknar text → skärmläsaren vet inte vad den betyder.  
+            Lägg till <code>aria-label</code> eller <code>title</code>.
+        </p>
+
+        <div class="icon-task">
+            <button class="icon-btn" aria-label="gilla">
+                <img src="https://img.icons8.com/ios-filled/50/000000/like.png" alt="" aria-hidden="true">
+            </button>
+
+            <textarea class="code-area"></textarea>
+        </div>
+    </section>
+
+    <!-- Övning 4 -->
+    <section class="exercise">
+        <h2>Övning 4 – Beskriv bilden med aria-describedby</h2>
+        <p class="instruction">
+            Vissa bilder behöver mer än en kort alt-text. Här ska du skapa en <code>aria-describedby</code> som pekar på en längre förklaring.
+        </p>
+
+        <div class="task-large">
+            <img src="https://picsum.photos/500/280?random=5" class="big-img" alt="Fjord med berg" aria-describedby="longdesc" >
+
+            <p id="longdesc">En fjord med vatten som sträcker sig in i en vik täckt av höga berg med snö på toppen. </p>
+
+            <textarea class="code-area"></textarea>
+        </div>
+    </section>
+
+    <!-- Övning 5 -->
+    <section class="exercise">
+        <h2>Övning 5 – Hitta felen (Lighthouse-style)</h2>
+        <p id="instructions" class="instruction">
+            Nedanför finns en liten “minisida” som har tre tillgänglighetsfel.  
+            Identifiera dem och skriv förbättrade lösningar i kodrutan.
+        </p>
+
+        <div class="mini-page">
+            <h3>Vår Produkt</h3>
+            <img src="https://picsum.photos/300/180?random=7" alt="lägenheter i höghus">
+
+            <button onclick="alert('köpt!')" type="button" class="buy-btn">Köp nu</button>
+
+            <p style="color:#999;">Otillräcklig kontrast?</p>
+        </div>
+
+        <textarea class="code-area"></textarea>
+    </section>
+
+</main>
+
 </body>
 </html>
