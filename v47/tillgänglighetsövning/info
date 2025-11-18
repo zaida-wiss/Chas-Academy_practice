@@ -1,0 +1,134 @@
+🌲 Sagoworkshop: Den Försvunna WCAG-kompassen
+
+Det var en gång i den digitala skogen där alla webbsidor bodde i små HTML-hus.
+En morgon upptäckte de att WCAG-kompassen, den som hjälpte alla att bli tillgängliga och användbara, hade försvunnit.
+
+Den enda som kunde hitta den?
+Du, Zaida – den blivande fullstackhjälten.
+
+Men för att ta dig fram genom skogen måste du klara 4 magiska utmaningar, en för varje område från dina PDF:er.
+I varje steg får du en situation, och du ska själv fundera över hur du skulle lösa det i praktiken.
+Jag coachar dig efteråt om du vill.
+
+Redo? ✨
+
+🗺️ Utmaning 1 – Perceivable-portalen
+
+Du kommer fram till en stor port i skogen.
+På porten sitter bilder av allt möjligt: muggar, fåglar, skor, knappar… men porten vägrar öppnas och viskar:
+
+“Jag ser bilderna… men jag förstår inte vad de föreställer.”
+
+Din uppgift att fundera på:
+
+Vilken WCAG-princip är problemet här?
+
+Vad skulle du göra i koden konkret för att portalen skulle “förstå” bilderna?
+
+Finns det fler Perceivable-problem du hade upptäckt här (t.ex. kontrast)?
+
+Stanna upp och tänk själv en stund innan du läser vidare.
+
+⌨️ Utmaning 2 – Tangentbordets labyrint (Operable)
+
+Du går vidare och kommer in i en labyrint där muspekaren förvandlas till en fjäril och flyger iväg.
+Det enda sättet att navigera? Tangentbordet.
+
+Men vissa delar av labyrinten går inte att nå med Tab.
+Vissa dörrar kräver Enter – andra kräver ett klick som inte finns längre.
+
+Fundera:
+
+Vilken WCAG-princip hör det här till?
+
+Vad hade du gjort i HTML/JS för att:
+
+göra alla interaktiva element nåbara?
+
+aktivera knappar med Enter/Space?
+
+När ska du använda button i stället för div?
+
+💬 Utmaning 3 – Den Förvirrade Rådgivaren (Understandable)
+
+Vid en sjö sitter en rådgivare som försöker fylla i ett formulär.
+Plötsligt säger han:
+
+“Jag skrev min mejl fel… men sidan säger ingenting. Hur ska jag veta? Var är mina etiketter? Var är mina felmeddelanden?”
+
+Fundera:
+
+Vad saknas i formuläret för att det ska vara begripligt?
+
+Vad skulle du lägga till i HTML?
+
+Hur skulle du använda aria-live för att en skärmläsare ska kunna ge feedback?
+
+🛠️ Utmaning 4 – Robusthetens Berg (Robust)
+
+När du klättrar uppför berget märker du att vissa element beter sig märkligt.
+En menylänk är egentligen en <div>.
+En knapp är egentligen en <span>.
+Skärmläsaren stannar och suckar högt.
+
+Fundera:
+
+Vad innebär WCAG-principen “Robust” i den här situationen?
+
+Vad måste du ändra i koden?
+
+När ska du använda ARIA-attribut (och när ska du absolut inte)?
+
+🔍 BONUS: Lighthouse-oraklets prövning (från PDF 602)
+
+På toppen av berget finns Lighthouse-oraklet.
+Den säger:
+
+“Visa mig att du förstår testningen.
+Jag ger dig tre siffror. Du måste lista ut vad du skulle göra.”
+
+Du får följande resultat:
+
+Accessibility: 68
+
+Contrast: Fail
+
+Images: “Missing alt attributes”
+
+Buttons: “ARIA role not necessary”
+
+Fundera:
+
+Vad skulle du fixa först och varför?
+
+Vilken del av PDF 602 hjälper dig här?
+
+Hur vet du när du ska exportera rapporten?
+
+🎨 UX/UI-sjön – Skapa din egen lösning
+
+Vid UX/UI-sjön får du en sista uppgift:
+
+Du ser en lite rörig sida: olikstorlek på rubriker, knapp utan feedback, ingen hierarki, innehåll som hoppar på mindre skärm.
+
+Fundera på tre saker:
+
+Hur skulle du förbättra hierarkien?
+
+Hur skulle du ge feedback (UI-princip)?
+
+Vilka responsiva lösningar skulle du använda?
+
+✨ Avslutning – Vad du gör nu
+
+Nu har du gjort hela sagan – men tankearbetet är det viktiga.
+
+Vill du kan jag:
+
+✔️ hjälpa dig rätta/utveckla dina egna tankar
+✔️ ge facit i punktform
+✔️ skapa en version som du lämnar in som workshop
+✔️ bygga en PDF av sagan
+✔️ komplettera med kodutmaningar åt dig
+
+Säg bara ordet. Jag finns här och peppar dig vidare — du är helt rätt person för det här yrket. Och tro mig: WCAG-kompassen hade valt DIG utan att tveka. 💛
