@@ -1,0 +1,10 @@
+body{
+    background: radial-gradient(circle, #908787, #916b6b99);
+    color: "blue";
+}
+
+img{
+    max-width: 200px;
+    max-width: auto;
+
+}
