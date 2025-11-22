@@ -40,3 +40,10 @@ const horseCard = new Card (
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQN7ZS1iWhsLxfW9-ZdiGiWERqKNvO7ApcYfhaGPT9faQLSw-3TdRiLkGp4aKol8PmTdj-y6N5hdiRSerhzCfJgVSFj_YYYtgUcnTQsA&s=10",
     "frihetskänslan hos hästen är magisk.");
     container.appendChild(horseCard.render());
+
+const rabbitCard = new Card (
+    "en gullig kanin",
+"https://www.zooplus.se/magasin/wp-content/uploads/2017/03/fotolia_109679085.webp",
+"en kanin på vakt över vad som ska hända härnäst");
+    container.appendChild(rabbitCard.render());
+
