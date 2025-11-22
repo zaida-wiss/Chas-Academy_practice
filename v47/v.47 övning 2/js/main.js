@@ -1,4 +1,4 @@
-import { getWeather } from "./services/weatherServices";
+import { getWeather } from "./services/weatherServices.js";
 
 async function showWeather(){
     try{
