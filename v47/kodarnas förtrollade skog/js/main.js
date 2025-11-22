@@ -20,9 +20,17 @@ console.log("Resultatet från userInput: ", input);
 
 const button = userButton("Skicka", () => {
     console.log("Knappen från main.js kör sin funktion!");
+
+    const value = input.value;
+    const echoed = echoValue(value);
+    const num = Number(echoed);
+    const doubled = doubleValue(num);
+    const resultBox = createDisplayBox(`Resultatet blev: ${doubled}`);
+    document.body.appendChild(resultBox);
 });
+
 //lägg knappen i DOM en gång
 document.body.appendChild(button);
-
 console.log("Allt är nu klart i main.js!");
+
 
