@@ -1,10 +1,54 @@
 body{
-    background: radial-gradient(circle, #908787, #916b6b99);
-    color: "blue";
+    background: radial-gradient(circle, #e2dddd, #916b6b99);
+    color: darkblue;
 }
 
 img{
     max-width: 200px;
-    max-width: auto;
+    height: auto;
 
+}
+button:focus {
+    outline: 3px solid #003399;
+    outline-offset: 4px;
+}
+section {
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+section img {
+    display: block;
+    margin: 0 auto 15px;
+}
+button {
+    padding: 10px 20px;
+    background-color: #003399;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #002266;
+}
+button,
+button:hover,
+button:focus {
+    transition: 0.2s ease;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
