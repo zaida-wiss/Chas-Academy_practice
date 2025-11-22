@@ -1,0 +1,24 @@
+img {
+    max-width: 150px;
+    height: auto;   
+}
+body {
+    background: radial-gradient(circle, #d4e2e2, #6b919199);
+    color: darkgreen;
+}
+container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-items: center;    padding: 20px;
+}
+section.box{
+    display: flex;
+    flex-direction: row;
+    border: black 1 px solid;
+    border-radius: 20px;
+    padding: 15 px;
+    margin: 10 px;
+    background-color: #f0f8ffcc;
+}
