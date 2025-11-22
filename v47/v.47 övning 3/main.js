@@ -13,15 +13,21 @@ class Card{
     const card = document.createElement("section");
     card.classList.add("box");
 
+    //TILLGÄNGLIGHET
+    card.setAttribute("aria-label", `${this.rubrik}`);    card.setAttribute("role", "region");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-live", "polite");
+
     card.innerHTML=`
     <h2>${this.rubrik}</h2>
-    <img src="${this.img}">
+    <img src="${this.img}" alt="${this.rubrik}">
     <p>${this.beskrivning}</p>
     <button>Klicka här</button>
     `;
     return card;
-    }
 }
+}
+
 
 const dogCard= new Card(
     "En gullig hund",
@@ -47,3 +53,5 @@ const rabbitCard = new Card (
 "en kanin på vakt över vad som ska hända härnäst");
     container.appendChild(rabbitCard.render());
 
+    
+    
