@@ -15,6 +15,14 @@ console.log("Resultat från doubleValue: ", dubbelt);
 const box = createDisplayBox(`Dubblat värde: ${dubbelt}`);
 document.body.appendChild(box);
 
+const input = userInput();
+console.log("Resultatet från userInput: ", input);
+
+const button = userButton("Skicka", () => {
+    console.log("Knappen från main.js kör sin funktion!");
+});
+//lägg knappen i DOM en gång
+document.body.appendChild(button);
 
 console.log("Allt är nu klart i main.js!");
 
