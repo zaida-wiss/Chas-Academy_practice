@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(45deg, lightgreen, darkgreen);
+    background: linear-gradient(45deg, lightgreen, rgb(2, 43, 2));
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -48,5 +48,9 @@ h1, h2, h3 {
     color: white;
     margin-top: 0;
     }
+
+img{
+    height: 200px;;
+}
 
 
