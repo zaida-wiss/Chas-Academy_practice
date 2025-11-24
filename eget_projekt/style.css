@@ -7,16 +7,27 @@ html, body {
     font-family: 'Arial', sans-serif;
 }
 
-body {
-    background: linear-gradient(45deg, lightgreen, rgb(2, 43, 2));
+.container {
+    display: grid;
+
+}
+.container-nisse{
     display: flex;
     justify-content: center;
+
+}
+
+body {
+    background: linear-gradient(45deg, lightgreen, rgb(2, 43, 2));
+    display: grid;
+    justify-citems: center;
     padding: 20px;
     display: grid;
 }
 
 /* Wrapper = centrerar och begränsar bredde */
-#todayLucka {    width: 70%;
+#todayLucka {    
+    width: 80%;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr;
@@ -47,10 +58,13 @@ h1, h2, h3 {
     font-weight: 400;
     color: white;
     margin-top: 0;
+    text-align: center;
     }
 
 img{
-    height: 200px;;
+    width: 200px;
+    bottom: 20px;
+   
 }
 
 
