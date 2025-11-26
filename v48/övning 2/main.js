@@ -13,7 +13,7 @@ class Card {
         card.classList.add("card-komponenter");
 
         card.innerHTML = `
-        <img src="./bilder/${this.img}" alt="${this.rubrik}">
+        <img src="./bilder/${this.img}" alt="${this.rubrik}"  width="300" height="450">
         <h3>${this.rubrik}</h3>
         <p>${this.beskrivning}</p>
         <button class="cardBtn">Läs mer</button>
@@ -22,9 +22,9 @@ class Card {
     }
 }
 
-const tomteTjej = new Card("nissan_pose.webp", "Tomteflicka", "Busig nisse som älskar snö.");
-const tomteKille = new Card("nisse_pose.webp", "Tomtepojke", "Glad nisse som vinkar hej!");
-const tomtenissar = new Card("nissar_bus.webp", "Busnissar", "Två nissar som busar.");
+const tomteTjej = new Card("nissan_pose1.webp", "Tomteflicka", "Busig nisse som älskar snö.");
+const tomteKille = new Card("nisse_pose1.webp", "Tomtepojke", "Glad nisse som vinkar hej!");
+const tomtenissar = new Card("nissar_bus1.webp", "Busnissar", "Två nissar som busar.");
 
 cardContainer.appendChild(tomteTjej.render());
 cardContainer.appendChild(tomteKille.render());

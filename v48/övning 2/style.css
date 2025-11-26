@@ -6,6 +6,7 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--santa-red);
+    padding: 0;
 }
 
 #cardContainer {
@@ -13,12 +14,13 @@ body {
     gap: 20px;
     padding: 20px;
     justify-items: center;
-
+    
     /* RESPONSIV MAGI */
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 .card-komponenter{
     display: flex;
+    width: 80%;
     flex-direction: column;
     background-color: var(--cardBg);
     border-radius: 15px;
