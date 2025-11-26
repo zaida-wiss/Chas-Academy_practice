@@ -10,14 +10,10 @@ const resultat = document.getElementById("resultat");
 
 document.getElementById("loginForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    
-    loginBtn.classList.add("btn-loading");
-    
-    setTimeout(() => {
-        loginBtn.classList.remove("btn-loading");
-    }, 600);
-    resultat.textContent="";
-    
+   
+    //Rensar DIV helt!
+    resultat.innerHTML="";
+
     const status = document.createElement("p");
     
     if (inputUsername.value.trim() ==="" || inputPassword.value.trim()===""){
@@ -28,4 +24,10 @@ document.getElementById("loginForm").addEventListener("submit", (e) => {
         status.style.backgroundColor="green";
     }
     resultat.appendChild(status);
+
+    loginBtn.classList.add("btn-loading");
+    
+    setTimeout(() => {
+        loginBtn.classList.remove("btn-loading");
+    }, 600);
 })
