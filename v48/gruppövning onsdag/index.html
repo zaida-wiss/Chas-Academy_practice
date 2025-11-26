@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Osäker demo-app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <h1>Demo: Konto</h1>
+
+    <section>
+      <h2>Logga in</h2>
+      <form id="loginForm">
+        <label>
+          Användarnamn
+          <input id="username" type="text" />
+        </label>
+        <label>
+          Lösenord
+          <input id="password" type="password" />
+        </label>
+        <button type="submit">Logga in</button>
+      </form>
+      <p id="loginStatus"></p>
+    </section>
+
+    <section>
+      <h2>Välkommen</h2>
+      <p id="welcomeText">Ingen användare inloggad.</p>
+    </section>
+
+    <section>
+      <h2>Kommentar</h2>
+      <textarea id="commentInput" rows="3"></textarea>
+      <button id="saveCommentBtn">Spara kommentar</button>
+      <h3>Senaste kommentar</h3>
+      <div id="commentOutput"></div>
+    </section>
+
+    <section>
+      <h2>Kontohantering</h2>
+      <button id="deleteAccountBtn" onclick="deleteAccount()">
+        Ta bort konto
+      </button>
+    </section>
+  </body>
+</html>

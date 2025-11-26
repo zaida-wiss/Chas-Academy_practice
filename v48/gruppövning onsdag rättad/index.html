@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Osäker demo-app</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ✔️ SCRIPT FÖRST PÅSLAGET: Bra att det är defer, men -->
+    <!-- ❌ SÄKERHETSFÖRBÄTTRING: HTML saknar Content Security Policy (CSP) -->
+    <!-- En CSP-header hade kraftigt minskat XSS-riskerna. -->
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+    <h1>Demo: Konto</h1>
+
+    <section>
+      <h2>Logga in</h2>
+
+      <form id="loginForm">
+        <!-- ❌ SAKNAR input-validering -->
+        <!-- Åtgärd: required, minlength, aria-labels, tydliga fel -->
+        <label>
+          Användarnamn
+          <!-- ❌ Ingen validering: användaren kan skriva HTML/JS här -->
+          <!-- ✔️ ÅTGÄRD: lägg in required, minlength="2" -->
+          <input id="username" type="text" />
+        </label>
+
+        <label>
+          Lösenord
+          <!-- ❌ Ingen validering eller password-policy -->
+          <!-- ✔️ ÅTGÄRD: required + minlength + ev. autocomplete="off" -->
+          <input id="password" type="password" />
+        </label>
+
+        <!-- ✔️ Semantisk knapp = bra -->
+        <!-- Men saknar disabled-state & aria-live-feedback -->
+        <button type="submit">Logga in</button>
+      </form>
+
+      <!-- ✔️ Bra plats för feedback -->
+      <!-- ❌ Men saknar aria-live="polite" för tillgänglighet -->
+      <!-- Detta gör att skärmläsare inte får veta när texten ändras -->
+      <p id="loginStatus"></p>
+    </section>
+
+    <section>
+      <h2>Välkommen</h2>
+
+      <!-- ❌ Detta element blir XSS-mål via script.js (innerHTML) -->
+      <!-- Åtgärd: använd textContent i scriptet -->
+      <p id="welcomeText">Ingen användare inloggad.</p>
+    </section>
+
+    <section>
+      <h2>Kommentar</h2>
+
+      <!-- ❌ Kommentar-fältet saknar validering -->
+      <!-- ✔️ Åtgärd: required, maxlength -->
+      <textarea id="commentInput" rows="3"></textarea>
+
+      <!-- ✔️ OK knapp -->
+      <button id="saveCommentBtn">Spara kommentar</button>
+
+      <h3>Senaste kommentar</h3>
+
+      <!-- ❌ Kommentarer skrivs in här via innerHTML → XSS -->
+      <!-- Detta är en direkt injektionspunkt för attacker -->
+      <!-- Åtgärd: använd textContent i scriptet -->
+      <div id="commentOutput"></div>
+    </section>
+
+    <section>
+      <h2>Kontohantering</h2>
+
+      <!-- ❌ Inline-event ONCLICK = osäkert + förbjudet i uppgiften -->
+      <!-- Inline-event är sårbara vid XSS och bryter separation av ansvar -->
+      <!-- Uppgiften kräver att ni ersätter detta med addEventListener -->
+      <button id="deleteAccountBtn" onclick="deleteAccount()">
+        Ta bort konto
+      </button>
+
+      <!-- ❌ Ingen bekräftelse-dialog -->
+      <!-- Uppgiften kräver UX-säkerhetsförbättring: confirm(...) -->
+    </section>
+  </body>
+</html>
