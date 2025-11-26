@@ -1,0 +1,51 @@
+:root {
+    --santa-red: rgb(99, 14, 14);
+    --cardBg: rgb(180, 175, 175);
+}
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--santa-red);
+}
+
+#cardContainer {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+
+    /* RESPONSIV MAGI */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+.card-komponenter{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--cardBg);
+    border-radius: 15px;
+    border: black 0.8px solid;
+    box-shadow: black 0px 0px 5px;
+    color: var(--santa-red);
+    width: 150px;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}   
+img {
+    max-width: 150px;
+    height: auto;
+}
+.cardBtn {
+    background-color: var(--santa-red);
+    border-radius: 8px;
+    box-shadow: black 0px 0px 5px;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+}
+.cardBtn:hover{
+    transform: scale(1.03);
+    transition: all 0.3s ease;
+    background-color: black;
+}
