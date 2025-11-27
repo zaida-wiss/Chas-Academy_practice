@@ -95,8 +95,8 @@ input[type="password"]:focus {
  font-weight: 600;
  font-size: 1rem;
  cursor: pointer;
- transition:
- background 0.2s ease,
+ transition:;
+ background: 0.2s ease,
  transform 0.1s ease,
  box-shadow 0.1s ease,
  opacity 0.2s ease;

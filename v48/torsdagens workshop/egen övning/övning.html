@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+ <meta charset="UTF-8">
+ <title>Dåligt registreringsformulär</title>
+ <style>
+ body {
+ font-family: system-ui, sans-serif;
+ background: #ffffff;
+ color: #666666;
+ }
+ h1 {
+ font-size: 20px;
+ text-align: center;
+ margin-top: 10px;
+ }
+ form {
+ margin-top: 10px;
+ padding: 10px;
+ border: 1px solid #cccccc;
+ width: 260px;
+ margin-left: 10px;
+ }
+ input {
+ display: block;
+ margin: 2px;
+ padding: 4px;
+ width: 95%;
+ }
+ button {
+ margin-top: 4px;
+ padding: 4px;
+ width: 100%;
+ background: #cccccc;
+ border: 1px solid #999999;
+ }
+ #message {
+ color: red;
+ font-size: 12px;
+ }
+ </style>
+</head>
+<body>
+ <h1>Skapa konto</h1>
+ <form id="signup">
+    <label for="email">E-post</label>
+        <input id="email" type="email" placeholder="namn@exempel.se">
+    <label for="password">Lösenord</label>
+        <input id="password" type="password" placeholder="Minst 6 tecken">
+    <label for="confirm">Bekräfta lösenord</label>
+        <input id="confirm" type="password" placeholder="upprepa lösenord">
+        <button>OK</button>
+ <p id="message"></p>
+ </form>
+ <script>
+ const form = document.querySelector("#signup");
+ const message = document.querySelector("#message");
+ form.addEventListener("submit", function (event) {
+ event.preventDefault();
+ message.innerHTML = "Submitted!";
+ });
+ </script>
+</body>
+</html>
