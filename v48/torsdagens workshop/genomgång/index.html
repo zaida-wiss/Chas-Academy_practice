@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login -UX, UI och Säkerhet</title>
+    <script defer src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page">
+        <section class="auth-card" aria-labelledby="login-title">
+            <h1 id="login-title">Logga in</h1>
+            <p class="auth-subtitle">
+            Ett litet exempel på UX, UI och Säkerhet</p>
+        </section>
+
+        <form id="loginForm" novalidate>
+            <label for="email">email</label>
+            <input id="email" name="email" type="email" autocomplete="email" recuired>
+            
+            <label for="password">password</label>
+            <input id="password" name="password" type="password" autocomplete="password" recuired>
+
+            <button type="submit" class="btn-primary">Logga in</button>
+            <p id="formMessage" class="form-message" aria-live="polite"></p>
+        </form>
+
+        <p class="hint">
+            Det här är ett test
+        </p>
+    </main>
+    
+</body>
+</html>

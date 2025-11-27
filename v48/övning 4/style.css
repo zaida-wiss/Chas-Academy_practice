@@ -1,0 +1,20 @@
+ :root {
+        --primary: #2b6cb0;
+        --secondary: #edf2f7;
+        --santared: #e53e3e;
+        --elfgreen: #48bb78;
+        --radius: 8px;
+        --spacing: 16px;
+}
+
+#infoCard {
+    background-color: var(--primary);
+    border-radius: var(--radius);
+    border: var(--elfgreen) 2px solid;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing);
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
