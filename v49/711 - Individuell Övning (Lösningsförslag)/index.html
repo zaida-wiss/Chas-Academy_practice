@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Skapa konto – UX/UI Workshop</title>
+	<link rel="stylesheet" href="style.css">
+	<script defer src="app.js"></script>
+</head>
+
+<body>
+	<main class="app">
+		<section class="card" aria-labelledby="signup-title">
+			<h1 id="signup-title" class="card__title">Skapa konto</h1>
+			<p class="card__subtitle">
+				Förbättrat formulär med tydlig UX, UI och grundläggande säkerhet.
+			</p>
+			<form id="signup-form" class="form" novalidate>
+				<label class="form__label" for="email">E-post</label>
+				<input class="form__input" id="email" type="email" autocomplete="email" placeholder="namn@exempel.se"
+					required>
+				<label class="form__label" for="password">Lösenord</label>
+				<input class="form__input" id="password" type="password" autocomplete="new-password"
+					placeholder="Minst 6 tecken" required>
+				<label class="form__label" for="confirm">Upprepa lösenord</label>
+				<input class="form__input" id="confirm" type="password" autocomplete="new-password"
+					placeholder="Skriv samma lösenord igen" required>
+				<button type="submit" class="btn btn--primary">
+					Skapa konto
+				</button>
+				<p id="form-message" class="feedback" aria-live="polite"></p>
+			</form>
+			<p class="hint">
+				Tips: Testa att lämna något fält tomt eller skriva olika lösenord.
+			</p>
+			<p class="hint">
+				Vi sparar inte ditt lösenord i webbläsaren – det här är bara ett
+				frontend-exempel.
+			</p>
+		</section>
+	</main>
+</body>
+
+</html>

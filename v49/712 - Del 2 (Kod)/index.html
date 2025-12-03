@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Mini-designsystem – UI-komponenter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="style.css" />
+	<script src="app.js" defer></script>
+</head>
+
+<body>
+	<header class="site-header">
+		<div class="site-header__inner">
+			<h1 class="site-title">Mini-designsystem</h1>
+			<button id="themeToggle" class="btn btn--ghost" type="button">
+				Byt till mörkt tema
+			</button>
+		</div>
+		<p class="site-subtitle">
+			Återanvändbara knappar, kort och ett enkelt mörkt/ljust tema.
+		</p>
+	</header>
+	<main class="page">
+		<section class="card-grid" aria-label="Exempel-kort">
+			<article class="card">
+				<p class="card__tag">Ny kurs</p>
+				<h2 class="card__title">Introduktion till UX/UI</h2>
+				<p class="card__body">
+					Lär dig grunderna i användarupplevelse, visuella hierarkier
+					och microinteraktioner.
+				</p>
+				<div class="card__actions">
+					<button class="btn btn--primary" type="button">
+						Läs mer
+					</button>
+					<button class="btn btn--secondary" type="button">
+						Lägg till
+					</button>
+				</div>
+			</article>
+			<article class="card">
+				<p class="card__tag">Populär</p>
+				<h2 class="card__title">Webbsäkerhet för frontend</h2>
+				<p class="card__body">
+					Förstå XSS, säker lagring och varför validering är en del av
+					användarupplevelsen.
+				</p>
+				<div class="card__actions">
+					<button class="btn btn--primary" type="button">
+						Läs mer
+					</button>
+					<button class="btn btn--secondary" type="button">
+						Spara
+					</button>
+				</div>
+			</article>
+			<article class="card">
+				<p class="card__tag">Tips</p>
+				<h2 class="card__title">CSS-variabler och teman</h2>
+				<p class="card__body">
+					Skapa flexibla designsystem med färgvariabler, komponenter
+					och mörkt läge.
+				</p>
+				<div class="card__actions">
+					<button class="btn btn--primary" type="button">
+						Läs mer
+					</button>
+					<button class="btn btn--secondary" type="button">
+						Dela
+					</button>
+				</div>
+			</article>
+		</section>
+	</main>
+</body>
+
+</html>
