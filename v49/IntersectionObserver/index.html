@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Bilder</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<header class="site-header">
+		<h1>Bilder</h1>
+		<p>
+			Här ska vi ladda bilder när dom syns via javascript
+		</p>
+	</header>
+
+	<main>
+		<section class="profile">
+			<h2>Profil</h2>
+			<p id="greeting"></p>
+			<p id="login-info"></p>
+		</section>
+
+		<section class="gallery">
+			<h2>Bildgalleri</h2>
+			<p>
+				Här visas ett gäng bilder. Just nu är de förberedda för lazy loading, men
+				JavaScript-koden saknas.
+			</p>
+
+			<div id="imagesDiv" class="gallery-grid">
+				<img class="gallery-image lazy" src="https://via.placeholder.com/40x30?text=..."
+					data-src="https://picsum.photos/id/200/1200/800" alt="Produktbild 1" />
+				<img class="gallery-image lazy" src="https://via.placeholder.com/40x30?text=..."
+					data-src="https://picsum.photos/id/201/1200/800" alt="Produktbild 2" />
+				<img class="gallery-image lazy" src="https://via.placeholder.com/40x30?text=..."
+					data-src="https://picsum.photos/id/202/1200/800" alt="Produktbild 3" />
+				<img class="gallery-image lazy" src="https://via.placeholder.com/40x30?text=..."
+					data-src="https://picsum.photos/id/203/1200/800" alt="Produktbild 4" />
+				<img class="gallery-image lazy" src="https://via.placeholder.com/40x30?text=..."
+					data-src="https://picsum.photos/id/204/1200/800" alt="Produktbild 5" />
+			</div>
+		</section>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+
+</html>
