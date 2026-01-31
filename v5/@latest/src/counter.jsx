@@ -13,7 +13,7 @@ export default function Counter () {
   return (
     <div>
       <p>Count: {count}</p>
-      <button className="clickBtn" onClick ={handleClick}>Öka</button>
+      <button className="clickBtn btn" onClick ={handleClick}>Öka</button>
 
     </div>
   );
