@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./App.css";
 import UserCard from "./components/UserCard";
 
@@ -16,7 +16,7 @@ age={42}
 <UserCard
 name="Marcus Johansson"
 email="marcus.johansson@chasacademy.se"
-age={15}
+age={15} 
 />
 </div>
 );
