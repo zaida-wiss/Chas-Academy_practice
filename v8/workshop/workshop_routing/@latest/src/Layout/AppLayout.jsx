@@ -1,4 +1,4 @@
-import './Layout/AppLayout.css';
+import './AppLayout.css';
 import {NavLink} from 'react-router-dom';
 
 export default function AppLayout() {
