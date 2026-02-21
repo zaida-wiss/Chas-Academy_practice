@@ -3,7 +3,7 @@ import "./Zaida.css";
 export default function Zaida() {
   return (
     <div className="zaida">
-      <h1>Zaida</h1>
+      <h1 style={{color: "hotpink"}}>Zaida</h1>
       <p>
         Zaida is a software developer with a passion for creating intuitive and
         user-friendly applications. With a background in computer science, Zaida
