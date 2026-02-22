@@ -1,0 +1,7 @@
+.counter-context{
+  display: flex;
+  gap: 15px;
+}
+.setStepInput {
+  text-align: center;
+}
