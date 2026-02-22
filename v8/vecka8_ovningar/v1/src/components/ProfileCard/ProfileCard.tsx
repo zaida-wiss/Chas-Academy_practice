@@ -1,3 +1,4 @@
+import "./ProfileCard.css"
 import {ProfileCardProps} from "../../types"
 
 export default function ProfileCard({
@@ -9,10 +10,11 @@ export default function ProfileCard({
   return(
     <section>
       <img
+        className="profileImage"
         src={imageUrl}
         alt={`Bild på ${name}`}
         loading= "lazy"
-        style={{maxWidth: "100%", height: "auto"}}
+        style={{maxWidth: "200px", height: "auto"}}
         />
       <h2>{name}</h2>
       <h3>{title}</h3>

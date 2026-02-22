@@ -1,0 +1,18 @@
+.navBar{
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 30px;
+}
+link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+}
+.navBar a {
+  color: white;
+}
+.navBar a.active {
+  color: rgb(237, 153, 237);
+}
