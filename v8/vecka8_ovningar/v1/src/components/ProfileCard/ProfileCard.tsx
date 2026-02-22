@@ -8,7 +8,12 @@ export default function ProfileCard({
 }:ProfileCardProps) {
   return(
     <section>
-      <img src={imageUrl} alt='Bild på {name}' />
+      <img
+        src={imageUrl}
+        alt={`Bild på ${name}`}
+        loading= "lazy"
+        style={{maxWidth: "100%", height: "auto"}}
+        />
       <h2>{name}</h2>
       <h3>{title}</h3>
       <p>{description}</p>
