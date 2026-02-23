@@ -4,10 +4,12 @@
 Lär dig hämta data från ett API med Fetch, hantera loading/error-tillstånd och skapa en robust grund för serverdata.
 
 ## Uppgift
-1. Skapa en React-komponent som hämtar en lista (t.ex. todos) från ett API med Fetch.
+1. Skapa en React-komponent som hämtar en lista (t.ex. produkter) från ett API med Fetch.
 2. Visa loading/error/data-tillstånd i UI.
 3. Implementera en custom hook (`useFetch`) som kapslar logiken.
 4. Lägg till felhantering: visa ett felmeddelande om något går fel.
+
+**Exempel på produkt-API:** https://fakestoreapi.com/products
 
 ## Extra
 - Lägg till en "Ladda om"-knapp som triggar en ny fetch.
@@ -23,7 +25,7 @@ Skapa ett API-lager med Axios och hantera autentisering och fel.
 ## Uppgift
 1. Skapa en Axios-instans med baseURL och Accept-header.
 2. Lägg till en interceptor som lägger på Authorization-token från localStorage.
-3. Skriv API-funktioner för GET och POST (t.ex. `getTodos`, `createTodo`).
+3. Skriv API-funktioner för GET och POST (t.ex. `getProducts`, `createProduct`).
 4. Använd API-funktionerna i en komponent och visa loading/error/data.
 
 ## Extra
@@ -37,9 +39,9 @@ Skapa ett API-lager med Axios och hantera autentisering och fel.
 Bygg en sida som kan skapa, läsa, uppdatera och ta bort data (CRUD).
 
 ## Uppgift
-1. Skapa en komponent som visar en lista med todos.
-2. Lägg till formulär för att skapa nya todos.
-3. Lägg till funktion för att toggla "done" och ta bort todos.
+1. Skapa en komponent som visar en lista med produkter.
+2. Lägg till formulär för att skapa nya produkter.
+3. Lägg till funktion för att uppdatera och ta bort produkter.
 4. Hantera loading/error-tillstånd.
 
 ## Extra
