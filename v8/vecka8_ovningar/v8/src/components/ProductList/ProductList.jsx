@@ -1,5 +1,5 @@
 import "./ProductList.css";
-import useFetchProducts from "../hooks/useFetchProducts";
+import useFetchProducts from "../../hooks/useFetchProducts";
 
 export default function ProductList() {
   const { products, loading, error } = useFetchProducts();
