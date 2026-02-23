@@ -1,21 +1,8 @@
 import "./ProductList.css";
-import {useState, useEffect} from "react";
+import useFetchProducts from "../hooks/useFetchProducts";
 
 export default function ProductList() {
- 
-  const [loading, setLoading] = useState(true);
-
-
-  useEffect (() => {
-    fetch("https://fakestoreapi.com/products")
-    .then(res => {
-      if (!res.ok) throw new Error("Något gick fel vid hämtningen!");
-      return res.json();
-    })
-    .then(data => setProducts(data))
-    .catch(err => setError(err.message))
-    .finally(() => setLoading(false));
-  }, []);
+  const { products, loading, error } = useFetchProducts();
 
   return (
     <>
