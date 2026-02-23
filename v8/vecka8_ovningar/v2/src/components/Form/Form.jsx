@@ -6,44 +6,86 @@ export default function Form(){
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
 
-const [nameError, setNameError] = useState("");
-const [emailError, setEmailError]= useState("");
-const [passwordError, setPasswordError] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError]= useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-const handleSubmit = (e) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleSubmit = (e) => {
   e.preventDefault();
-  setEmailError(e.target.value.length <2 ? "Emailen måste vara längre än två tecken":"");
-  setPasswordError(e.target.value.length<2 ? "ditt lösenord behöver vara längre än 2 tecken":"")
 
+  let valid = true;
+
+  if (name.length <2) {
+  setNameError("Namnet måste vara längre än två bokstäver");
+  valid= false;
+  }
+
+  if (email.length <2) {
+  setEmailError("Emailen måste vara längre än två tecken");
+  valid = false;
+  }
+
+  if (password.length <2){
+  setPasswordError("Ditt lösenord behöver vara längre än 2 tecken");
+  valid = false;
+  }
+
+  if (valid) {
+    setIsLoggedIn(true);
+  }
 };
 
+if (isLoggedIn) {
   return (
-    <form onSubmit={handleSubmit} action="">
+    <div>Välkommen, {name}
+      <button onClick={()=> setIsLoggedIn(false)}>Logga ut</button>
+    </div>
+  )
+}
+
+return (
+  <form onSubmit={handleSubmit}>
       <input
           className="nameInput"
           type="text"
           value={name}
           onChange={e => {
             setName(e.target.value);
-            setNameError(e.target.value.length <2 ? "Namnet måste vara minst 2 tecken": "");
+            if (e.target.value.length <2) {
+              setNameError("Namnet måste vara längre än 2 bokstäver")}else {
+                setNameError("");
+              }
           }}
           placeholder="Namn"
       />
+      {nameError && <div className="error">{nameError}</div>}
+
       <input
           className="emailInput"
           type="email"
           value={email}
           onChange={e => {
             setEmail(e.target.value);
+            if (e.target.value <2) {
+              setEmailError("Du mailadressen är orimligt kort")
+            } else {
+              setEmailError("");
+            }
           }}
           placeholder= "E-post"
-      />
+          />
       <input
           className="passwordInput"
           type="password"
           value={password}
           onChange={e => {
-            setPassword(e.target.value.length<2 ? "Lösenordet måste vara längre än 2 tecken":"");
+            setPassword(e.target.value);
+            if (e.target.value.length <2) {
+              setPasswordError("Ditt lösenord måste vara längre än 2 bokstäver")
+            }else {setPasswordError("");
+            }
           }}
           placeholder="lösenord"
       />
