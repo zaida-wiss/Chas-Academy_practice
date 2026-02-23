@@ -2,9 +2,9 @@ import "./ProductList.css";
 import {useState, useEffect} from "react";
 
 export default function ProductList() {
-  const [products, setProducts]= useState([]);
+ 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
 
   useEffect (() => {
     fetch("https://fakestoreapi.com/products")
