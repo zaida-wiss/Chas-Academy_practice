@@ -18,12 +18,12 @@ export default function Form(){
   let valid = true;
 
   if (name.length <2) {
-  setNameError("Namnet måste vara längre än två bokstäver");
+  setNameError("Namnet måste vara längre än 2 tecken");
   valid= false;
   }
 
   if (email.length <2) {
-  setEmailError("Emailen måste vara längre än två tecken");
+  setEmailError("Emailen måste vara längre än 2 tecken");
   valid = false;
   }
 
@@ -54,7 +54,7 @@ return (
           onChange={e => {
             setName(e.target.value);
             if (e.target.value.length <2) {
-              setNameError("Namnet måste vara längre än 2 bokstäver")}else {
+              setNameError("Namnet måste vara längre än två tecken")}else {
                 setNameError("");
               }
           }}
@@ -68,14 +68,15 @@ return (
           value={email}
           onChange={e => {
             setEmail(e.target.value);
-            if (e.target.value <2) {
-              setEmailError("Du mailadressen är orimligt kort")
+            if (e.target.value.length <2) {
+              setEmailError("E-postadressen är orimligt kort")
             } else {
               setEmailError("");
             }
           }}
           placeholder= "E-post"
           />
+          {emailError && <div className="error">{emailError}</div>}
       <input
           className="passwordInput"
           type="password"
@@ -83,24 +84,18 @@ return (
           onChange={e => {
             setPassword(e.target.value);
             if (e.target.value.length <2) {
-              setPasswordError("Ditt lösenord måste vara längre än 2 bokstäver")
+              setPasswordError("Ditt lösenord måste vara längre än två tecken")
             }else {setPasswordError("");
             }
           }}
           placeholder="lösenord"
       />
+      {passwordError &&<div className="error">{passwordError}</div>}
 
       <button
         className="logInBtn"
         type="submit"
       >Logga in</button>
-
-      {/* Visa felmeddelande: */}
-    {nameError && <div className="error">{nameError}</div>}
-
-    {emailError && <div className="error">{emailError}</div>}
-
-    {passwordError && <div className="error">{passwordError}</div>}
 
     </form>
   );
