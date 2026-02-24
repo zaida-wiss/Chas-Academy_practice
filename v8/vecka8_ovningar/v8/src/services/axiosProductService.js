@@ -17,3 +17,13 @@ api.interceptors.request.use((config) => {
 });
 
 export default api;
+
+
+
+
+export function createProduct(data) {
+  return api.post("/products", data);
+}
+
+
+

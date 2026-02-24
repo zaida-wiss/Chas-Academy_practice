@@ -1,6 +1,6 @@
-
 import {useAxiosProducts} from "../../hooks/useAxiosProducts";
 import "./AxiosProducts.css";
+
 
 export function AxiosProducts(props){
   const {products, loading, error} =useAxiosProducts();
@@ -14,7 +14,9 @@ export function AxiosProducts(props){
         {products.map(product => (
           <li key={product.id}>{product.title}</li>
         ))}
+
       </ul>
+
     </div>
   );
 }
