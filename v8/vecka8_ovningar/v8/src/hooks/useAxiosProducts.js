@@ -7,7 +7,9 @@ export function useAxiosProducts() {
   const [error, setError] = useState(null);
 
   useEffect(() =>{
-    setLoading(true);
+    // Behövs bara om jag t.ex. vill ha en uppdateringsknapp
+    // setLoading(true);
+
 
     api.get("/products")
       .then(res => setProducts(res.data))
