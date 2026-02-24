@@ -1,17 +1,19 @@
 import {useState, useEffect} from "react";
 import {fetchProducts} from "../services/fetchProducts";
 
-export default function useFetchProducts() {
+export default function useFetchProducts(reload) {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
+
 
   useEffect(() =>{
     fetchProducts()
       .then(setProducts)
       .catch(err => setError(err.message))
       .finally(() => setLoading(false));
-  },[]);
+  },[reload]);
 
-  return {products, error, loading}
+  return {products, error, loading};
 }
