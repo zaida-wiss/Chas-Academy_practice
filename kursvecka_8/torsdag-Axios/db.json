@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "title": "Read the course material",
+      "done": true
+    },
+    {
+      "id": "2",
+      "title": "Do code-along",
+      "done": false
+    },
+    {
+      "id": "3",
+      "title": "Curse over teachers code",
+      "done": false
+    }
+  ]
+}
