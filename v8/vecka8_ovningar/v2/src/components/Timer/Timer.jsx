@@ -1,12 +1,11 @@
 import "./Timer.css";
-import {useState, useEffect, startTransition} from "react";
+import {useState, useEffect} from "react";
 
 
 export default function Timer () {
   const [hour, setHour]= useState(0);
   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
-  const [timer, setTimer] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [laps, setLaps] = useState([]);
 
