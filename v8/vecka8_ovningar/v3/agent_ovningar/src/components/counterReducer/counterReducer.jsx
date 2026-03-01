@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import "./counterReducer.css";
+import "./CounterReducer.css";
 
 const initialState = { count: 0, step: 1};
 
@@ -18,17 +18,16 @@ switch(action.type) {
 }
 }
 
-
-export default function counterReducer () {
+export default function CounterReducer () {
   const [state, dispatch] = useReducer(reducer,initialState);
 
   return (
     <div>
       <h2>Räknare</h2>
       <p>Värde: {state.count}</p>
-      <button onClick={() => dispatch({ type: "increment"})}>Öka</button>
-      <button onClick={() => dispatch({ type: "decrement"})}>Minska</button>
-      <button onClick={() => dispatch({ type: "reset"})}>Återställ</button>
+        <button onClick={() => dispatch({ type: "increment"})}>Öka</button>
+        <button onClick={() => dispatch({ type: "decrement"})}>Minska</button>
+        <button onClick={() => dispatch({ type: "reset"})}>Återställ</button>
     </div>
   );
 
