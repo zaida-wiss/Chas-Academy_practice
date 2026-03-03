@@ -88,8 +88,7 @@ function reducer (state, action) {
           value={state.values.username || ""}
           onChange={handleChange}
           onBlur={handleBlur}
-          onError={errors}
-          />
+        />
           {state.touched.username && state.errors.username && (<span style={{color: "red"}}>{state.errors.username}</span>
           )}
 
@@ -99,7 +98,7 @@ function reducer (state, action) {
           value={state.values.password || ""}
           onChange={handleChange}
           onBlur={handleBlur}
-          />
+        />
           {state.touched.password && state.errors.password && (<span style={{color: "red"}}>{state.errors.password}</span>
         )}
 
