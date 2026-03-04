@@ -13,18 +13,25 @@ const [search, setSearch] = useState("");
 const [newItem, setNewItem] = useState("");
 const [products, setProducts]=useState(Products);
 
+//Lägg till en produkt
+function handleSubmit (e) {
+  e.preventDefault();
+    if (newItem.trim() === "") return;
+    setProducts([...products, {id: products.length + 1, title: newItem, price: 0}]);
+    setNewItem("");
+  };
   function handleNewItem (e) {
     setNewItem(e.target.value)
   };
   function handleSearch (e) {
     setSearch(e.target.value)
   };
-  function handleSubmit (e) {
-    e.preventDefault();
-    setNewItem(e.target.value)=(e)=> {
-      setNewItem(products.map)
-    }
-  };
+
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => product.title.toLowerCase().includes(search.toLowerCase())
+  );
+},[products, search]);
+
 
   return (
       <form onSubmit={handleSubmit}>
