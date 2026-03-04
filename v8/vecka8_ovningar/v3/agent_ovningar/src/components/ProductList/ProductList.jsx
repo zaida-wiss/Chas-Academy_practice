@@ -11,21 +11,32 @@ const Products = [
 export default function ProductList () {
 const [search, setSearch] = useState("");
 const [newItem, setNewItem] = useState("");
+const [products, setProducts]=useState(Products);
 
+  function handleNewItem (e) {
+    setNewItem(e.target.value)
+  };
   function handleSearch (e) {
     setSearch(e.target.value)
-  }
+  };
   function handleSubmit (e) {
-    setNewItem(e.target.value)
-  }
+    e.preventDefault();
+    setNewItem(e.target.value)=(e)=> {
+      setNewItem(products.map)
+    }
+  };
+
   return (
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          value={search}
           onChange={handleSearch}
         />
         <input
           type="text"
+          value={newItem}
+          onChange={handleNewItem}
         />
         <button>Lägg till produkt</button>
       </form>
