@@ -1,7 +1,6 @@
 import "./components/ProductList/ProductList"
 import {useState, useMemo} from "react";
 
-
 const Products = [
   {id:1, title: "bord", price: 1589},
   {id:2, title: "stol", price: 589},
@@ -11,18 +10,24 @@ const Products = [
 
 export default function ProductList () {
 const [search, setSearch] = useState("");
+const [newItem, setNewItem] = useState("");
 
-  function handleChange () {
-    e.target.value =()=>setSearch(Products.title)
+  function handleSearch (e) {
+    setSearch(e.target.value)
+  }
+  function handleSubmit (e) {
+    setNewItem(e.target.value)
   }
   return (
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          onChange={handleChange}
+          onChange={handleSearch}
         />
+        <input
+          type="text"
+        />
+        <button>Lägg till produkt</button>
       </form>
-
   );
-
 }
