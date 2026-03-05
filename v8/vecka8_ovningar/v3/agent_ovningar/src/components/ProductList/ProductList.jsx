@@ -51,7 +51,7 @@ function handleSubmit (e) {
         {/* Rendera produktlistan: */}
         <ul>
           {filteredProducts.map(product => (
-            <li key={product.id}>{product.title}-{product.price} kr </li>
+            <li key={product.id}>{product.title}-{product.price} kr.</li>
           ))}
         </ul>
       </form>
