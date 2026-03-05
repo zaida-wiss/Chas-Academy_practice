@@ -20,16 +20,18 @@ function handleSubmit (e) {
     setProducts([...products, {id: products.length + 1, title: newItem, price: 0}]);
     setNewItem("");
   };
+
   function handleNewItem (e) {
     setNewItem(e.target.value)
   };
+
   function handleSearch (e) {
     setSearch(e.target.value)
   };
 
+//Memoriserad filtrering
   const filteredProducts = useMemo(() => {
-    return products.filter(product => product.title.toLowerCase().includes(search.toLowerCase())
-  );
+    return products.filter(product => product.title.toLowerCase().includes(search.toLowerCase()));
 },[products, search]);
 
 
@@ -46,6 +48,12 @@ function handleSubmit (e) {
           onChange={handleNewItem}
         />
         <button>Lägg till produkt</button>
+        {/* Rendera produktlistan: */}
+        <ul>
+          {filteredProducts.map(product => (
+            <li key={product.id}>{product.title}-{product.price} kr </li>
+          ))}
+        </ul>
       </form>
   );
 }
