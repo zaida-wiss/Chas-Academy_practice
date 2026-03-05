@@ -1,4 +1,4 @@
-import "./components/ProductList/ProductList"
+import "./ProductList.css"
 import {useState, useMemo} from "react";
 
 const Products = [
